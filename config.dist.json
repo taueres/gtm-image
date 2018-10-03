@@ -1,0 +1,5 @@
+{
+    "url": "www.example.org",
+    "token": "secret-token",
+    "port": 3000
+}
