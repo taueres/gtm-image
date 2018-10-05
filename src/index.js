@@ -21,4 +21,13 @@ app.get('/gtm', async (req, res) => {
 });
 
 app.disable('x-powered-by');
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+const server = app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+const shutDown = () => {
+    console.log('Received SIGTERM, shutting down gracefully...');
+    server.close(() => {
+        console.log('HTTP server closed');
+        process.exit(0);
+    });
+};
+process.on('SIGTERM', shutDown);
