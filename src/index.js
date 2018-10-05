@@ -20,4 +20,5 @@ app.get('/gtm', async (req, res) => {
     }
 });
 
+app.disable('x-powered-by');
 app.listen(port, () => console.log(`App listening on port ${port}!`));

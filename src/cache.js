@@ -1,6 +1,11 @@
 const { fetchImage } = require('./proxy');
+const { cacheMs } = require('../config.json');
 
 const hasValidCache = cache => {
+    if (cacheMs <= 0) {
+        return false;
+    }
+
     if (cache.data === null) {
         return false;
     }
@@ -11,8 +16,12 @@ const hasValidCache = cache => {
 };
 
 const setValueToCache = (value, cache) => {
+    if (cacheMs <= 0) {
+        return;
+    }
+
     const curTime = Date.now();
-    const exp = curTime + 24 * 60 * 60 * 1000; // 24 hours
+    const exp = curTime + cacheMs;
 
     cache.data = value;
     cache.exp = exp;
