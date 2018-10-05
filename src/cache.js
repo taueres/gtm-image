@@ -1,5 +1,5 @@
-const { fetchImage } = require('./proxy');
 const { cacheMs } = require('../config.json');
+const { getImage } = require('./imageBuilder');
 
 const hasValidCache = cache => {
     if (cacheMs <= 0) {
@@ -38,7 +38,7 @@ exports.buildCache = () => {
             return cache.data;
         }
 
-        const data = await fetchImage();
+        const data = await getImage();
         setValueToCache(data, cache);
         return data;
     };
