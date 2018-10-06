@@ -1,7 +1,7 @@
 const { fetchImage } = require('./proxy');
-const { addDateTimeToImage } = require('./dateTime');
+const { customizeImage } = require('./customizeImage');
 
 exports.getImage = async () => {
     const rawImage = await fetchImage();
-    return addDateTimeToImage(rawImage);
+    return customizeImage(rawImage);
 };

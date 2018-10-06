@@ -2,5 +2,10 @@
     "url": "www.example.org",
     "token": "secret-token",
     "port": 3000,
-    "cacheMs": 0
+    "cacheMs": 0,
+    "influx": {
+        "dbName": "database_name",
+        "host": "localhost",
+        "measurement": "size"
+    }
 }

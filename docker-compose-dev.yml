@@ -1,0 +1,15 @@
+version: '3'
+services:
+  node:
+    image: "node:8-alpine"
+    command: node /gtm-image/dev/run.js
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/gtm-image"
+    depends_on:
+      - "influxdb"
+  influxdb:
+    image: "influxdb:1.6-alpine"
+    ports:
+      - "8086:8086"
